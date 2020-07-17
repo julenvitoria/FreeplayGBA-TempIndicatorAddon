@@ -8,12 +8,9 @@ ADDONS=( \
 "julenvitoria/FreeplayGBAcm3-Emulators.cfg on" \
 "julenvitoria/FreeplayGBAcm3-Configuraciones_de_juegos on" \
 "julenvitoria/temperatureMonitor off" \
-"TheFlav/setPCA9633 PWM_Brightness_controller_(requires_add-on) on" \
-"TheFlav/FreeplayAudioTools Audio_tools_for_HDMI_and_mono/stereo on" \
-"Mootikins/Freeplay-Wireless-Menu Menu_for_toggling_Bluetooth/WiFi_on_Pi_Zero_ONLY off" \
 )
 
-cmd=(dialog --title "Instalar Modulos" \
+cmd=(dialog --title "Seleccionar modulos para instalar" \
 	--separate-output \
 	--ok-label "Instalar" \
 	--checklist "Seleccionar opciones:" 0 0 0)
