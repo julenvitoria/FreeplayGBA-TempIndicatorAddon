@@ -4,10 +4,10 @@
 # Tail_of_GitHub_URL Short_Description Default_Checkbox_State
 # The description must use underscores instead of spaces
 ADDONS=( \
-"julenvitoria/FreeplayGBAcm3-Actualizacion_del_sistema on" \
+"julenvitoria/FreeplayGBAcm3-Actualizacion_del_sistema off" \
 "julenvitoria/FreeplayGBAcm3-Emulators.cfg on" \
 "julenvitoria/FreeplayGBAcm3-Configuraciones_de_juegos on" \
-"julenvitoria/temperatureMonitor on" \
+"LuisDiazUgena/temperatureMonitor off" \
 "TheFlav/setPCA9633 PWM_Brightness_controller_(requires_add-on) on" \
 "TheFlav/FreeplayAudioTools Audio_tools_for_HDMI_and_mono/stereo on" \
 "Mootikins/Freeplay-Wireless-Menu Menu_for_toggling_Bluetooth/WiFi_on_Pi_Zero_ONLY off" \
