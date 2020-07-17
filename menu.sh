@@ -23,7 +23,7 @@ clear
 
 mkdir /home/pi/Freeplay
 
-printf "Descargando addons seleccionados."
+printf "Descargando addons seleccionados..."
 
 pushd /home/pi/Freeplay &> /dev/null
 
@@ -40,9 +40,9 @@ do
 done
 
 if [ ${#DL_ERR[@]} -eq 0 ]; then
-	printf "\n\u001b[32mTodos los modulos seleccionados fieron descargados satisfactoriamente\u001b[0m\n"
+	printf "\n\u001b[32mTodos los modulos seleccionados fueron descargados satisfactoriamente\u001b[0m\n"
 else
-	printf "\n\e[0;31;40mLos siguientes modulos nompjdoeron ser descargados de manera satisfactoria:\u001b[0m\n"
+	printf "\n\e[0;31;40mLos siguientes modulos no pudieron ser descargados de manera satisfactoria:\u001b[0m\n"
 	for MODULE in ${DL_ERR[@]}
 	do
 		printf "\t\e[0;31;40m"$MODULE"\u001b[0m\n"
@@ -51,16 +51,16 @@ fi
 sleep 1
 
 INST_ERR=()
-printf "\n\u001b[36;1mInstalling downloaded modules\u001b[0m\n"
+printf "\n\u001b[36;1mInstalando modulos descargados...\u001b[0m\n"
 for DIR in $(ls -d */)
 do
 	pushd $DIR &> /dev/null
 	printf "\t\u001b[36;1m$DIR...\u001b[0m\n"
 
 	if sudo ./install.sh; then
-		printf "\u001b[36;1m$DIR Installed Successfully\u001b[0m\n"
+		printf "\u001b[36;1m$DIR Instalado de manera satisfactoria\u001b[0m\n"
 	else
-		printf "\e[0;31;40m$DIR NOT Installed Successfully\u001b[0m\n"
+		printf "\e[0;31;40m$DIR NO INSTALADO de manera satisfactoria\u001b[0m\n"
 		INST_ERR+=( "$DIR" )
 	fi
 
@@ -69,34 +69,34 @@ done
 popd &> /dev/null
 
 if [ ${#INST_ERR[@]} -eq 0 ]; then
-	printf "\n\u001b[32mAll downloaded modules installed successfully\u001b[0m\n"
+	printf "\n\u001b[32mTodos los modulos descargados se instalaron satisfactoriamente\u001b[0m\n"
 else
-	printf "\n\e[0;31;40mThe following modules could not be installed:\u001b[0m\n"
+	printf "\n\e[0;31;40mLos siguientes modulos no pudieron ser instalados de manera satisfactoria:\u001b[0m\n"
 	for MODULE in ${INST_ERR[@]}
 	do
 		printf "\t\e[0;31;40m"$MODULE"\u001b[0m\n"
 	done
 fi
 
-dialog --title "RxBrad Freeplay Theme" \
-	--yesno "Would you like to download and install RxBrad's Freeplay theme for EmulationStation?" 0 0
+#dialog --title "RxBrad Freeplay Theme" \
+#	--yesno "Would you like to download and install RxBrad's Freeplay theme for EmulationStation?" 0 0
 
-RESP=$?
-case $RESP in
-	0) sudo git clone --recursive --depth 1 "https://github.com/rxbrad/es-theme-freeplay.git" "/etc/emulationstation/themes/freeplay"; \
-		sudo sed -i 's/<string name="ThemeSet" value=".*" \/>/<string name="ThemeSet" value="freeplay" \/>/g' /opt/retropie/configs/all/emulationstation/es_settings.cfg; \
-		sudo sed -i 's/<string name="TransitionStyle" value=".*" \/>/<string name="TransitionStyle" value="instant" \/>/' /opt/retropie/configs/all/emulationstation/es_settings.cfg;;
-	1) ;;
-	255) ;;
-esac
+#RESP=$?
+#case $RESP in
+#	0) sudo git clone --recursive --depth 1 "https://github.com/rxbrad/es-theme-freeplay.git" "/etc/emulationstation/themes/freeplay"; \
+#               sudo sed -i 's/<string name="ThemeSet" value=".*" \/>/<string name="ThemeSet" value="freeplay" \/>/g' /opt/retropie/configs/all/emulationstation/es_settings.cfg; \
+#		sudo sed -i 's/<string name="TransitionStyle" value=".*" \/>/<string name="TransitionStyle" value="instant" \/>/' /opt/retropie/configs/all/emulationstation/es_settings.cfg;;
+#	1) ;;
+#	255) ;;
+#esac
 
-mkdir -p "/home/pi/RetroPie/retropiemenu/Freeplay Options"
-cp /home/pi/Freeplay/Freeplay-Support/OptimalLCDSettings.sh "/home/pi/RetroPie/retropiemenu/Freeplay Options/OptimalLCDSettings.sh"
+#mkdir -p "/home/pi/RetroPie/retropiemenu/Freeplay Options"
+#cp /home/pi/Freeplay/Freeplay-Support/OptimalLCDSettings.sh "/home/pi/RetroPie/retropiemenu/Freeplay Options/OptimalLCDSettings.sh"
 
-if grep -q "Freeplay Optimal LCD Settings" /opt/retropie/configs/all/emulationstation/gamelists/retropie/gamelist.xml ; then
-	echo "Optimal LCD Settings Changer already in menu"
-else
-	sudo sed -i 's|</gameList>|\t<game>\n\t\t<path>./Freeplay Options/OptimalLCDSettings.sh</path>\n\t\t<name>Freeplay Optimal LCD Settings</name>\n\t\t<desc>Switch between optimal LCD settings and HDMI compatibility</desc>\n\t\t<image></image>\n\t\t<playcount>0</playcount>\n\t\t<lastplayed>20180514T205700</lastplayed>\n\t</game>\n</gameList>|' /opt/retropie/configs/all/emulationstation/gamelists/retropie/gamelist.xml
-fi
+#if grep -q "Freeplay Optimal LCD Settings" /opt/retropie/configs/all/emulationstation/gamelists/retropie/gamelist.xml ; then
+#	echo "Optimal LCD Settings Changer already in menu"
+#else
+#	sudo sed -i 's|</gameList>|\t<game>\n\t\t<path>./Freeplay Options/OptimalLCDSettings.sh</path>\n\t\t<name>Freeplay Optimal LCD Settings</name>\n\t\t<desc>Switch between optimal LCD settings and HDMI compatibility</desc>\n\t\t<image></image>\n\t\t<playcount>0</playcount>\n\t\t<lastplayed>20180514T205700</lastplayed>\n\t</game>\n</gameList>|' /opt/retropie/configs/all/emulationstation/gamelists/retropie/gamelist.xml
+#fi
 
 exit 0
