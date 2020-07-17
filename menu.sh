@@ -4,45 +4,45 @@
 # Tail_of_GitHub_URL Short_Description Default_Checkbox_State
 # The description must use underscores instead of spaces
 ADDONS=( \
-"TheFlav/Freeplay-Support General_Freeplay_Tools on" \
-"TheFlav/rpi-fbcp Original_display_driver_(Zero) on" \
-"mootikins/FreeplayILI9341 Precompiled_advanced_display_driver_(Non-Zero) on" \
+"julenvitoria/FreeplayGBAcm3-Actualizacion_del_sistema on" \
+"julenvitoria/FreeplayGBAcm3-Emulators.cfg on" \
+"julenvitoria/FreeplayGBAcm3-Configuraciones_de_juegos on" \
 "TheFlav/mk_arcade_joystick_rpi GPIO_joystick_driver_with_related_tools on" \
 "TheFlav/setPCA9633 PWM_Brightness_controller_(requires_add-on) on" \
 "TheFlav/FreeplayAudioTools Audio_tools_for_HDMI_and_mono/stereo on" \
 "Mootikins/Freeplay-Wireless-Menu Menu_for_toggling_Bluetooth/WiFi_on_Pi_Zero_ONLY off" \
 )
 
-cmd=(dialog --title "Install Addons" \
+cmd=(dialog --title "Instalar Modulos" \
 	--separate-output \
-	--ok-label "Install" \
-	--checklist "Select options:" 0 0 0)
+	--ok-label "Instalar" \
+	--checklist "Seleccionar opciones:" 0 0 0)
 
 CHOICES=$("${cmd[@]}" ${ADDONS[@]} 2>&1 >/dev/tty)
 clear
 
 mkdir /home/pi/Freeplay
 
-printf "Downloading selected Addons. If there are any prompts, press Enter."
+printf "Descargando addons seleccionados."
 
 pushd /home/pi/Freeplay &> /dev/null
 
 DL_ERR=()
 for ADDON in $CHOICES
 do
-	printf "\nDownloading module "$ADDON"...\u001b[0m\n"
+	printf "\nDescargando modulo "$ADDON"...\u001b[0m\n"
 	if git clone https://github.com/"$ADDON" ; then
-		printf "\u001b[32mModule "$ADDON" downloaded successfully\u001b[0m\n"
+		printf "\u001b[32mModulo "$ADDON" descargado satisfactoriamente\u001b[0m\n"
 	else
-		printf "\e[0;31;40mModule "$ADDON" was NOT downloaded successfully\u001b[0m\n"
+		printf "\e[0;31;40mModulo "$ADDON" no fue descargado satisfactoriamente\u001b[0m\n"
 		DL_ERR+=( "$ADDON" )
 	fi
 done
 
 if [ ${#DL_ERR[@]} -eq 0 ]; then
-	printf "\n\u001b[32mAll selected modules downloaded successfully\u001b[0m\n"
+	printf "\n\u001b[32mTodos los modulos seleccionados fieron descargados satisfactoriamente\u001b[0m\n"
 else
-	printf "\n\e[0;31;40mThe following modules could not be downloaded:\u001b[0m\n"
+	printf "\n\e[0;31;40mLos siguientes modulos nompjdoeron ser descargados de manera satisfactoria:\u001b[0m\n"
 	for MODULE in ${DL_ERR[@]}
 	do
 		printf "\t\e[0;31;40m"$MODULE"\u001b[0m\n"
