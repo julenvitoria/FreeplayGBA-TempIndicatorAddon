@@ -15,4 +15,17 @@ cd ~/FreeplayGBAcm3Addons
 wget -O- https://raw.githubusercontent.com/julenvitoria/FreeplayGBATempIndicatorAddon/master/tempMonitor.py>~/temperatureMonitor/tempMonitor.py
 wget -O- https://raw.githubusercontent.com/julenvitoria/FreeplayGBATempIndicatorAddon/master/mycron>~/temperatureMonitor/mycron
 crontab ~/temperatureMonitor/mycron
-
+if [ -f /home/pi/temperatureMonitor/tempMonitor.py ]; then
+        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        sleep 1
+        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        sleep 1
+        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        sleep 1
+        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        sleep 1
+        sudo poweroff
+else
+        echo "SCRIPT WAS NOT INSTALLED PROPERLY"
+        sleep 5
+fi
