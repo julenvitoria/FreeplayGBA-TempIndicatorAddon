@@ -16,21 +16,21 @@ wget -O- https://raw.githubusercontent.com/julenvitoria/FreeplayGBATempIndicator
 wget -O- https://raw.githubusercontent.com/julenvitoria/FreeplayGBATempIndicatorAddon/master/mycron>~/temperatureMonitor/mycron
 crontab ~/temperatureMonitor/mycron
 if [ -f /home/pi/temperatureMonitor/tempMonitor.py ]; then
-        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        echo "POWERING OFF... PLEASE POWER ON BEFORE"
         sleep 1
-        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        echo "POWERING OFF... PLEASE POWER ON BEFORE"
         sleep 1
-        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        echo "POWERING OFF... PLEASE POWER ON BEFORE"
         sleep 1
-        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        echo "POWERING OFF... PLEASE POWER ON BEFORE"
         sleep 1
-        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        echo "POWERING OFF... PLEASE POWER ON BEFORE"
         sleep 1
-        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        echo "POWERING OFF... PLEASE POWER ON BEFORE"
         sleep 1
-        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        echo "POWERING OFF... PLEASE POWER ON BEFORE"
         sleep 1
-        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        echo "POWERING OFF... PLEASE POWER ON BEFORE"
         sleep 1
         sudo poweroff
 else
