@@ -12,5 +12,7 @@ sudo apt-get install python-pkg-resources python3-pkg-resources -y
 sudo apt-get install build-essential python-dev python-smbus python-pip -y
 sudo chmod 755 /home/pi/temperatureMonitor/Pngview/pngview
 cd ~/FreeplayGBAcm3Addons
-cp tempMonitor.py ~/temperatureMonitor
-crontab mycron
+wget -O- https://raw.githubusercontent.com/julenvitoria/FreeplayGBATempIndicatorAddon/master/tempMonitor.py>~/temperatureMonitor/tempMonitor.py
+wget -O- https://raw.githubusercontent.com/julenvitoria/FreeplayGBATempIndicatorAddon/master/mycron>~/temperatureMonitor/mycron
+crontab ~/temperatureMonitor/mycron
+
