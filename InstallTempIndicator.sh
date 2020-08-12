@@ -24,6 +24,14 @@ if [ -f /home/pi/temperatureMonitor/tempMonitor.py ]; then
         sleep 1
         echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
         sleep 1
+        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        sleep 1
+        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        sleep 1
+        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        sleep 1
+        echo "POWERING OFF SYSTEM... PLEASE POWER ON BEFORE"
+        sleep 1
         sudo poweroff
 else
         echo "SCRIPT WAS NOT INSTALLED PROPERLY"
